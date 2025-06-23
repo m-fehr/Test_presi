@@ -553,11 +553,316 @@
     "text": "Exercise – Lukas naive plume\n\n\n\nTurbulence in Fire"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Test",
+    "objectID": "05_Turbulence/index.html",
+    "href": "05_Turbulence/index.html",
+    "title": "Turbulence",
     "section": "",
-    "text": "Test\nhghgh"
+    "text": "Introductory text",
+    "crumbs": [
+      "One could do sections like this",
+      "05 Turbulence"
+    ]
+  },
+  {
+    "objectID": "05_Turbulence/08_summary.html",
+    "href": "05_Turbulence/08_summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "Key Parameter\n‘DNS’\n‘LES’\n‘VLES’\n‘SVLES’\n\n\n\n\nCFL_VELOCITY_NORM\n1\n1\n2\n3\n\n\nCHECK_VN\nT\nT\nT\nF\n\n\nFLUX_LIMITER\n‘CHARM’\n‘CHARM’\n‘SUPERBEE’\n‘SUPERBEE’\n\n\nCONSTANT_SPECIFIC_HEAT_RATIO\nF\nF\nF\nT\n\n\nEXTINCTION_MODEL\n2\n2\n1\n1\n\n\n\n\n\n\n\n\n\n\nBoundary layers\nWall functions\nInteraction of Turbulence with chemistry and radiation"
+  },
+  {
+    "objectID": "05_Turbulence/08_summary.html#simulation-modes-in-fds",
+    "href": "05_Turbulence/08_summary.html#simulation-modes-in-fds",
+    "title": "Summary",
+    "section": "",
+    "text": "Key Parameter\n‘DNS’\n‘LES’\n‘VLES’\n‘SVLES’\n\n\n\n\nCFL_VELOCITY_NORM\n1\n1\n2\n3\n\n\nCHECK_VN\nT\nT\nT\nF\n\n\nFLUX_LIMITER\n‘CHARM’\n‘CHARM’\n‘SUPERBEE’\n‘SUPERBEE’\n\n\nCONSTANT_SPECIFIC_HEAT_RATIO\nF\nF\nF\nT\n\n\nEXTINCTION_MODEL\n2\n2\n1\n1"
+  },
+  {
+    "objectID": "05_Turbulence/08_summary.html#not-covered",
+    "href": "05_Turbulence/08_summary.html#not-covered",
+    "title": "Summary",
+    "section": "",
+    "text": "Boundary layers\nWall functions\nInteraction of Turbulence with chemistry and radiation"
+  },
+  {
+    "objectID": "05_Turbulence/04_turbulent_viscosity.html",
+    "href": "05_Turbulence/04_turbulent_viscosity.html",
+    "title": "LES Turbulent Viscosity Models",
+    "section": "",
+    "text": "Description: An initial velocity field (file cbc32_uvw.csv) in a periodic cubic domain (length \\(L\\)) is used to compute the decay of the kinetic energy due to turbulence. The number of grid points \\(n\\) in all directions is 32.\n\n\n\n\n\n\n\n\n\\[\nL = 0.56549\\ m\n\\]\n\\[\nk_0 = \\frac{2\\pi}{L} = 11.11\\ m^{-1}\n\\]\n\\[\nk_{\\text{Nq}} = \\frac{k_0 \\cdot n}{2} = 177.77\\ m^{-1}\n\\]\n\n\n\n\n\n\nUse the FDS input file template (dec_turb_template.fds).\nRun the provided input file and visualize the velocity field (slices at domain boundary).\nAdd a device to monitor the mean kinetic energy in the whole volume.\n\nID = 'KE'\nQUANTITY = 'KINETIC ENERGY'\nSPATIAL_STATISTIC = 'MEAN'\n\nPlot the development of the mean kinetic energy as a function of time.\nCreate two additional cases:\n\n\nmolecular viscosity only\nno turbulent and no molecular viscosity\n\n\nPlot the development in all cases and add the following reference data:\n\nref_x = [0.0, 0.28, 0.67]\nref_y = [0.048, 0.0175, 0.0093]\n\n\n\n\n\n\n\nThe provided input file outputs the full velocity field at three selected times.\n&DUMP RAMP_UVW='times' /\n&RAMP ID='times', T=0.00 /\n&RAMP ID='times', T=0.28 /\n&RAMP ID='times', T=0.67 /\nUse the script plot_spectrum.py to compute and visualize the kinetic energy spectrum. Eventually, paths in the script need to be adjusted.\n\n\n\n\n\n\n\nsetup: shear flow, 2D, bounded, periodic\ncreation of vortices and kinetic energy\ngoal: ??"
+  },
+  {
+    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-decay-of-isotropic-turbulence",
+    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-decay-of-isotropic-turbulence",
+    "title": "LES Turbulent Viscosity Models",
+    "section": "",
+    "text": "Description: An initial velocity field (file cbc32_uvw.csv) in a periodic cubic domain (length \\(L\\)) is used to compute the decay of the kinetic energy due to turbulence. The number of grid points \\(n\\) in all directions is 32.\n\n\n\n\n\n\n\n\n\\[\nL = 0.56549\\ m\n\\]\n\\[\nk_0 = \\frac{2\\pi}{L} = 11.11\\ m^{-1}\n\\]\n\\[\nk_{\\text{Nq}} = \\frac{k_0 \\cdot n}{2} = 177.77\\ m^{-1}\n\\]"
+  },
+  {
+    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-i",
+    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-i",
+    "title": "LES Turbulent Viscosity Models",
+    "section": "",
+    "text": "Use the FDS input file template (dec_turb_template.fds).\nRun the provided input file and visualize the velocity field (slices at domain boundary).\nAdd a device to monitor the mean kinetic energy in the whole volume.\n\nID = 'KE'\nQUANTITY = 'KINETIC ENERGY'\nSPATIAL_STATISTIC = 'MEAN'\n\nPlot the development of the mean kinetic energy as a function of time.\nCreate two additional cases:\n\n\nmolecular viscosity only\nno turbulent and no molecular viscosity\n\n\nPlot the development in all cases and add the following reference data:\n\nref_x = [0.0, 0.28, 0.67]\nref_y = [0.048, 0.0175, 0.0093]"
+  },
+  {
+    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-ii",
+    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-ii",
+    "title": "LES Turbulent Viscosity Models",
+    "section": "",
+    "text": "The provided input file outputs the full velocity field at three selected times.\n&DUMP RAMP_UVW='times' /\n&RAMP ID='times', T=0.00 /\n&RAMP ID='times', T=0.28 /\n&RAMP ID='times', T=0.67 /\nUse the script plot_spectrum.py to compute and visualize the kinetic energy spectrum. Eventually, paths in the script need to be adjusted."
+  },
+  {
+    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-shear-flow",
+    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-shear-flow",
+    "title": "LES Turbulent Viscosity Models",
+    "section": "",
+    "text": "setup: shear flow, 2D, bounded, periodic\ncreation of vortices and kinetic energy\ngoal: ??"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html",
+    "href": "05_Turbulence/02_fundamentals.html",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Navier Stokes equation\nspecies equation\nenergy equation\n\n\n\n\n\n\n\nThe Reynolds number (Re) is the ratio of inertial to viscous forces in a fluid (element).\n\\[ \\text{Re} = \\frac{vL}{\\nu} = \\frac{\\rho v L}{\\mu} \\]\nWith:\n\nthe fluid density \\(\\rho\\), in \\(kg/m^3\\)\nthe flow velocity \\(v\\), in \\(m/s\\)\na characteristic length scale \\(L\\), in \\(m\\)\nthe dynamic \\(\\mu\\) and kinematic \\(\\nu\\) viscosity of the fluid, in \\(kg/(ms)\\) and \\(m^2/s\\)\n\n\n\n\nExample pipe flow?\n\nRe &lt; xxx : laminar\nRe &gt; xxx : turbulent\n\nExample, estimate Re for a candle and a pool fire\n\n\n\nDescription: One of the impact parameters on the flow structure behind an object is the Reynolds number (Re). A classical phenomenon is the Kármán vortex street. In this example, the impact of Re is qualitatively investigated.\nThe simulation geometry is a 2D domain with a main object (plate) and a small object to disturb the symmetry. There is an fixed inflow \\(v_0\\) boundary condition at \\(x_{\\text{min}}\\) and an open boundary condition at \\(x_{\\text{max}}\\). Both boundaries in z-direction are solid walls.\n\n\n\n\n\nOpen the input file vortex_street.fds and check for the values of inflow velocity \\(v_0\\), the geometry parameters \\(H_D\\) and \\(H_O\\), and the viscosity \\(\\nu\\) of the fluid.\nCalculate the Reynolds number for this setup.\nRun the execution of the provided FDS input file.\nVisualize the result, e.g., the y-component of the vorticity.\nAdjust the Reynolds number by a factor of 0.5 and 10 by adjusting the viscosity.\nCompare the results. What do you observe?\n\n\n\n\n\\[\nv_0 = 0.5 m/s\n\\]\n\\[\nH_O = 0.01 m\n\\]\n\\[\nRe = \\frac{v\\, L}{\\nu} = \\frac{v_0\\, H_O}{\\nu} = \\frac{5\\cdot 10^{-3}}{\\nu}\n\\]\n\n\n\n\\[\\nu = 12\\cdot 10^{-6} \\Rightarrow Re \\approx 416\\]\n\n\n\n\n\\[\\nu = 12\\cdot 10^{-5} \\Rightarrow Re \\approx 42\\]\n\n\n\n\n\\[\\nu = 6\\cdot 10^{-6} \\Rightarrow Re \\approx 833\\]\n\n\n\n\n\nIntegral scale\nIntertial scale\nKolmogorov scale\n\n\n\nAssumptions:\n\nUniversal, i.e. independet of how turbulence was generated\n(Local) isotropy\nEnergy cascade, kinetic energy is transported from large to small scales without losses, until it is dissipated at the smallest scales by viscosity\n\nKolmogorov Scales:\n\nlength: \\(\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\\)\ntime: \\(\\tau_\\eta = \\left( \\frac{\\nu}{\\varepsilon} \\right)^{1/2}\\)\nvelocity: \\(u_\\eta = (\\nu \\varepsilon)^{1/4}\\)\n\n\n\n\n\\[E(k) = C \\, \\varepsilon^{2/3} \\, k^{-5/3}\\]\n\n\n\n\n\n\n\n\ndirect numerical simulation of the Navier-Stokes equations, no subgrid turbulence model\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nthe Kolmogorov scale, \\(\\eta\\), needs to be resolved\n\\[\n\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\n\\]\ndissipation rate and strain rate tensor\n\\[\n\\varepsilon \\equiv \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}\n= 2\\mu \\left( S_{ij} S_{ij} - \\frac{1}{3} (\\nabla\\cdot\\mathbf{u})^2 \\right)\n\\quad;\\quad\nS_{ij} \\equiv \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right)\n\\]\n\n\n\nUse estimation of dissipation rate eps = U^3 / L\nU, L at large scale\neta approx L * Re^-3/4\ndo the small scales matter?\nHigh numerical resolution needed down to \\(\\eta\\)"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#governing-equations-needed-at-this-point",
+    "href": "05_Turbulence/02_fundamentals.html#governing-equations-needed-at-this-point",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Navier Stokes equation\nspecies equation\nenergy equation"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#reynolds-number",
+    "href": "05_Turbulence/02_fundamentals.html#reynolds-number",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "The Reynolds number (Re) is the ratio of inertial to viscous forces in a fluid (element).\n\\[ \\text{Re} = \\frac{vL}{\\nu} = \\frac{\\rho v L}{\\mu} \\]\nWith:\n\nthe fluid density \\(\\rho\\), in \\(kg/m^3\\)\nthe flow velocity \\(v\\), in \\(m/s\\)\na characteristic length scale \\(L\\), in \\(m\\)\nthe dynamic \\(\\mu\\) and kinematic \\(\\nu\\) viscosity of the fluid, in \\(kg/(ms)\\) and \\(m^2/s\\)"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#turbulence-characterisation-with-the-reynolds-number",
+    "href": "05_Turbulence/02_fundamentals.html#turbulence-characterisation-with-the-reynolds-number",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Example pipe flow?\n\nRe &lt; xxx : laminar\nRe &gt; xxx : turbulent\n\nExample, estimate Re for a candle and a pool fire"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-kármán-vortex-street",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-kármán-vortex-street",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Description: One of the impact parameters on the flow structure behind an object is the Reynolds number (Re). A classical phenomenon is the Kármán vortex street. In this example, the impact of Re is qualitatively investigated.\nThe simulation geometry is a 2D domain with a main object (plate) and a small object to disturb the symmetry. There is an fixed inflow \\(v_0\\) boundary condition at \\(x_{\\text{min}}\\) and an open boundary condition at \\(x_{\\text{max}}\\). Both boundaries in z-direction are solid walls."
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-tasks",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-tasks",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Open the input file vortex_street.fds and check for the values of inflow velocity \\(v_0\\), the geometry parameters \\(H_D\\) and \\(H_O\\), and the viscosity \\(\\nu\\) of the fluid.\nCalculate the Reynolds number for this setup.\nRun the execution of the provided FDS input file.\nVisualize the result, e.g., the y-component of the vorticity.\nAdjust the Reynolds number by a factor of 0.5 and 10 by adjusting the viscosity.\nCompare the results. What do you observe?"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-results",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "\\[\nv_0 = 0.5 m/s\n\\]\n\\[\nH_O = 0.01 m\n\\]\n\\[\nRe = \\frac{v\\, L}{\\nu} = \\frac{v_0\\, H_O}{\\nu} = \\frac{5\\cdot 10^{-3}}{\\nu}\n\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-1",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-results-1",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "\\[\\nu = 12\\cdot 10^{-6} \\Rightarrow Re \\approx 416\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-2",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-results-2",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "\\[\\nu = 12\\cdot 10^{-5} \\Rightarrow Re \\approx 42\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-3",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-results-3",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "\\[\\nu = 6\\cdot 10^{-6} \\Rightarrow Re \\approx 833\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#scales-in-turbulence",
+    "href": "05_Turbulence/02_fundamentals.html#scales-in-turbulence",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Integral scale\nIntertial scale\nKolmogorov scale"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#kolmogorov-theory",
+    "href": "05_Turbulence/02_fundamentals.html#kolmogorov-theory",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Assumptions:\n\nUniversal, i.e. independet of how turbulence was generated\n(Local) isotropy\nEnergy cascade, kinetic energy is transported from large to small scales without losses, until it is dissipated at the smallest scales by viscosity\n\nKolmogorov Scales:\n\nlength: \\(\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\\)\ntime: \\(\\tau_\\eta = \\left( \\frac{\\nu}{\\varepsilon} \\right)^{1/2}\\)\nvelocity: \\(u_\\eta = (\\nu \\varepsilon)^{1/4}\\)"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#energy-spectrum",
+    "href": "05_Turbulence/02_fundamentals.html#energy-spectrum",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "\\[E(k) = C \\, \\varepsilon^{2/3} \\, k^{-5/3}\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#dns",
+    "href": "05_Turbulence/02_fundamentals.html#dns",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "direct numerical simulation of the Navier-Stokes equations, no subgrid turbulence model\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nthe Kolmogorov scale, \\(\\eta\\), needs to be resolved\n\\[\n\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\n\\]\ndissipation rate and strain rate tensor\n\\[\n\\varepsilon \\equiv \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}\n= 2\\mu \\left( S_{ij} S_{ij} - \\frac{1}{3} (\\nabla\\cdot\\mathbf{u})^2 \\right)\n\\quad;\\quad\nS_{ij} \\equiv \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right)\n\\]"
+  },
+  {
+    "objectID": "05_Turbulence/02_fundamentals.html#exercise-estimate-eta",
+    "href": "05_Turbulence/02_fundamentals.html#exercise-estimate-eta",
+    "title": "Fundamentals Turbulence",
+    "section": "",
+    "text": "Use estimation of dissipation rate eps = U^3 / L\nU, L at large scale\neta approx L * Re^-3/4\ndo the small scales matter?\nHigh numerical resolution needed down to \\(\\eta\\)"
+  },
+  {
+    "objectID": "05_Turbulence/00_overview.html",
+    "href": "05_Turbulence/00_overview.html",
+    "title": "Introduction and Overview",
+    "section": "",
+    "text": "Turbulence in Fire\n\n\nPrevious Knowledge\n\n\nCourse Learning Outcomes\n\n\n\n\n\n\nKnows Before\n\n\nMust Know\n\n\nShould Know\n\n\nNice to Know\n\n\n\n\nScientific competence; what does the student know about theory\n\n\nBasic fluid mechanics\n\n\nCan identify and describe three main types of modeling in CFD\n\n\nCan identify the relevant length and time scales in a flow scenario and relate these to turbulence scales\n\n\nDynamic models, etc.\n\n\n\n\nProfessional competence and skills; what the student knows and can do in practice\n\n\nRun FDS simulations\n\n\nSpecify FDS inputs for turbulence models\n\n\nEstimate resolution requirements for a practical fire scenario\n\n\nDerive closure models"
+  },
+  {
+    "objectID": "05_Turbulence/00_overview.html#teaching-goals",
+    "href": "05_Turbulence/00_overview.html#teaching-goals",
+    "title": "Introduction and Overview",
+    "section": "",
+    "text": "Turbulence in Fire\n\n\nPrevious Knowledge\n\n\nCourse Learning Outcomes\n\n\n\n\n\n\nKnows Before\n\n\nMust Know\n\n\nShould Know\n\n\nNice to Know\n\n\n\n\nScientific competence; what does the student know about theory\n\n\nBasic fluid mechanics\n\n\nCan identify and describe three main types of modeling in CFD\n\n\nCan identify the relevant length and time scales in a flow scenario and relate these to turbulence scales\n\n\nDynamic models, etc.\n\n\n\n\nProfessional competence and skills; what the student knows and can do in practice\n\n\nRun FDS simulations\n\n\nSpecify FDS inputs for turbulence models\n\n\nEstimate resolution requirements for a practical fire scenario\n\n\nDerive closure models"
+  },
+  {
+    "objectID": "05_Turbulence/01_phenomena.html",
+    "href": "05_Turbulence/01_phenomena.html",
+    "title": "Phenomena",
+    "section": "",
+    "text": "Source: YouTube\n\n\n\n\n\nIn general:\n\nIntermittency\nScalar Mixing\nEddies\nstructure and energy Cascade\nDissipation at small scales\nChaotic, yet structured\n\nIn fire dynamics:\n\nmixing for combustion\nfire plume dynamics\nenhance of heat and mass transfer\n\n\n\n\n\nSource: Wikimedia Commons\n\n\n\n\n\n\n\npipe flow\nmagnitude velocity profile\nnon trivial normal velocities\ninstantanious velocity values (maybe from our plume measurements?)\n\n\n\ngiven instantanious velocity data, compute fluctuations"
+  },
+  {
+    "objectID": "05_Turbulence/01_phenomena.html#example-from-a-laminar-to-a-turbulent-flow",
+    "href": "05_Turbulence/01_phenomena.html#example-from-a-laminar-to-a-turbulent-flow",
+    "title": "Phenomena",
+    "section": "",
+    "text": "Source: YouTube"
+  },
+  {
+    "objectID": "05_Turbulence/01_phenomena.html#macroscopic-impact",
+    "href": "05_Turbulence/01_phenomena.html#macroscopic-impact",
+    "title": "Phenomena",
+    "section": "",
+    "text": "In general:\n\nIntermittency\nScalar Mixing\nEddies\nstructure and energy Cascade\nDissipation at small scales\nChaotic, yet structured\n\nIn fire dynamics:\n\nmixing for combustion\nfire plume dynamics\nenhance of heat and mass transfer\n\n\n\n\n\nSource: Wikimedia Commons"
+  },
+  {
+    "objectID": "05_Turbulence/01_phenomena.html#example",
+    "href": "05_Turbulence/01_phenomena.html#example",
+    "title": "Phenomena",
+    "section": "",
+    "text": "pipe flow\nmagnitude velocity profile\nnon trivial normal velocities\ninstantanious velocity values (maybe from our plume measurements?)"
+  },
+  {
+    "objectID": "05_Turbulence/01_phenomena.html#exercise-compute-fluctuation-spectrum",
+    "href": "05_Turbulence/01_phenomena.html#exercise-compute-fluctuation-spectrum",
+    "title": "Phenomena",
+    "section": "",
+    "text": "given instantanious velocity data, compute fluctuations"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html",
+    "href": "05_Turbulence/03_les_equations.html",
+    "title": "LES Equations",
+    "section": "",
+    "text": "figure with energy specturm illustrating the resolved and modelled parts\nresolved vs. modeled sub-grid scale quantites, e.g. k_sgs and K for kinetic energy\n\n\n\n\ndefinition, illustrative figure with u(t) = u_mean + u_fluct\n\n\n\nusing a filter width \\(\\Delta\\), define a “box” filtered quantity \\(\\overline{\\phi}\\)\n\\[\n\\overline{\\phi}(x, y, z, t) \\equiv \\frac{1}{V_c}\n\\int_{x - \\delta x / 2}^{x + \\delta x / 2}\n\\int_{y - \\delta y / 2}^{y + \\delta y / 2}\n\\int_{z - \\delta z / 2}^{z + \\delta z / 2}\n\\phi(x', y', z', t) \\, \\mathrm{d}x' \\, \\mathrm{d}y' \\, \\mathrm{d}z'\n\\]\nFavre averaging for variable density\n\\[\n\\overline{\\rho} \\, \\widetilde{\\phi} \\equiv \\overline{\\rho \\phi} \\quad \\Rightarrow \\quad \\widetilde{\\phi} \\equiv \\frac{\\overline{\\rho \\phi}}{\\overline{\\rho}}\n\\]\nneeded, when density is not constant, as otherwise conservation properties may not be conserved\n\n\n\nmean (filter) of the square vs. square of the mean (filter)\n\n\n\nFiltering and squaring do not commute.\nThis matters in turbulence modeling.\nWe filtered a high-frequency periodic field:\n\nGaussian filter\n\\[\\Delta = 0.1\\,L\\]\n\\[\\overline{u^2} \\neq \\bar{u}^2\\]\n\nTherefore we cannot simply use resolved quantities for nonlinear terms\nWe require a “subgrid model” to account for the residual\n\n\n\n\n\nFiltered Comparison\n\n\n\n\n\n\n\nis this a good / needed exercise?\nexercise with simple numbers, done on paper\ngiven (e.g. three value pairs) u and rho, compute u_bar and u_tilde and u_rho_bar\ncheck for for total momentum with / without favre filter\n\n\n\nCell\n\\(\\rho\\) (kg/m^3)\n\\(u\\) (m/s)\n\\(\\rho u\\) (kg/m^2/s)\n\n\n\n\n1\n1.0\n10.0\n10.0\n\n\n2\n10.0\n1.0\n10.0\n\n\n3\n1.0\n10.0\n10.0\n\n\n\n\n\n\nDNS equation (without mass source, external forces)\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nuse spatial filter, derivatives and filtering commute\n\\[\n\\frac{\\partial \\overline{\\rho u_i}}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} (\\overline{\\rho u_i u_j})\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau_{ij}}}{\\partial x_j}\n+ \\overline{\\rho} g_i + \\overline{f_{d,i}} + \\overline{\\dot{m}'''_{\\text{b}} u_{\\text{b},i}}\n\\]\nProblem: \\(\\overline{\\rho u_i u_j}\\)\nUse Favre filter: \\(\\overline{\\rho} \\, \\widetilde{{u}_i {u}_j}\\)\n\n\n\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\widetilde{{u}_i {u}_j} \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{d,i}\n+ \\overline{\\dot{m}'''_b} \\, \\tilde{u}_{b,i}\n\\]\nall primitve variables, but \\(\\widetilde{{u}_i {u}_j} \\neq\\tilde{u}_i\\tilde{u}_j\\)\nfind closure, but defining a sub-grid scale stress \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\text{sgs}} \\equiv \\overline{\\rho} \\left( \\widetilde{u_i u_j} - \\tilde{u}_i \\tilde{u}_j \\right)\n\\]\nthis leads to the LES momentum equation\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n- \\frac{\\partial \\tau^{\\mathrm{sgs}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]\n\n\n\ndecompose \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\mathrm{dev}} \\equiv \\overline{\\tau}_{ij} + \\tau^{\\mathrm{sgs}}_{ij}\n- \\frac{1}{3} \\tau^{\\mathrm{sgs}}_{kk} \\delta_{ij}\n= -2 (\\mu + \\mu_t) \\left( \\widetilde{S}_{ij} - \\frac{1}{3} (\\nabla \\cdot \\tilde{\\mathbf{u}}) \\delta_{ij} \\right)\n\\]\nturbulent viscosity \\(\\mu_t\\) must be modelled\nwe absorb the trace of the sub-grid stress, which is related to the sub-grid kinetic energy, \\(k_{sgs}\\), into the pressure as follows\n\\[\nk_{\\mathrm{sgs}} \\equiv \\frac{1}{2} \\tau_{kk}^{\\mathrm{sgs}}\n\\quad ; \\quad\n\\bar{p} \\equiv \\overline{p} + \\frac{2}{3} k_{\\mathrm{sgs}}\n\\]\nleads to apparently same equations as DNS\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]\n\n\n\nresolved kinetic energy: \\(K \\equiv \\frac{1}{2} \\tilde{u}_i \\tilde{u}_i\\)\n\\[\n\\overline{\\rho} \\,\\frac{D K}{D t}\n= -\\tilde{u}_i \\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\tilde{u}_i \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nand\n\\[\n\\overline{\\rho} \\, \\frac{D K}{D t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\left[ \\bar{p} \\, \\delta_{ij} + \\tau^{\\mathrm{dev}}_{ij} \\right] \\tilde{u}_i \\right)\n= \\bar{p} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_i}\n+ \\tau^{\\mathrm{dev}}_{ij} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nHere let’s put an image of the Kolmogorov spectrum with intetral of resolved \\(K\\) and subgrid \\(k_{sgs}\\).\n\n\n\n\\[\n\\frac{(\\rho Z_\\alpha)}{\\partial t} + \\frac{\\partial (\\rho Z_\\alpha u_j)}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\rho D_\\alpha \\frac{\\partial Z_\\alpha}{\\partial x_j}\\right)\n+ \\dot{m}_\\alpha''' + \\dot{m}_{\\rm b,\\alpha}'''\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\widetilde{Z_\\alpha u_j})}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\tilde{Z}_\\alpha \\tilde{u}_j)}{\\partial x_j}\n= - \\frac{\\partial J_{\\alpha,j}^{sgs}}{\\partial x_j}\n+ \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\nwhere\n\n\n\\[\nJ_{\\alpha,j}^{sgs} \\equiv \\overline{\\rho} (\\widetilde{Z_\\alpha u_j} - \\tilde{Z}_\\alpha \\tilde{u}_j)\n\\]\n\n\n\n\\(J_{\\alpha,j}^{sgs}\\) is unclosed\n\\(\\overline{\\dot{m}_\\alpha'''}\\) is unclosed and determines heat release rate!\n\n\n\n\n\n\n\\[\n\\frac{\\partial (\\rho h_s)}{\\partial t}\n+ \\frac{(\\rho h_s u_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''}{\\partial x_j}\n- \\frac{\\partial \\dot{q}_{r,j}''}{\\partial x_j}\n+ \\dot{q}''' + \\dot{q}_b'''\n\\]\n\\[\n\\frac{\\partial (\\overline{\\rho} \\tilde{h}_s)}{\\partial t}\n+ \\frac{(\\overline{\\rho} \\tilde{h}_s \\tilde{u}_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''^{sgs}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_j''}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_{r,j}''}}{\\partial x_j}\n+ \\overline{\\dot{q}'''} + \\overline{\\dot{q}_b'''}\n\\]\nwhere\n\n\n\\[\n\\dot{q}_j''^{sgs} \\equiv \\overline{\\rho}\\left(\\widetilde{h_s u_j}-\\tilde{h}_s \\tilde{u}_j\\right)\n\\]\n\\[\n\\overline{\\dot{q}_j''} = - \\overline{k \\frac{\\partial T}{\\partial x_j}} - \\overline{ \\sum_\\alpha h_{s,\\alpha} \\rho D_\\alpha[T] \\frac{\\partial Z_\\alpha}{\\partial x_j}}\n\\]\n\n\n\n\\(\\dot{q}_j''^{sgs}\\) is unclosed\n\\(\\overline{\\dot{q}_j''}\\) is unclosed and important at the wall\n\n\n\n\n\n\n\\[\nk_t = \\frac{\\mu_t c_p}{\\mathrm{Pr}_t}\n\\]\nand\n\\[\n(\\rho D)_t = \\frac{\\mu_t}{\\mathrm{Sc}_t}\n\\]\nwith the assumption / choice of \\(\\mathrm{Pr}_t = \\mathrm{Sc}_t\\) = const. = 0.5"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#idea-subgrid-scale-sgs-modelling",
+    "href": "05_Turbulence/03_les_equations.html#idea-subgrid-scale-sgs-modelling",
+    "title": "LES Equations",
+    "section": "",
+    "text": "figure with energy specturm illustrating the resolved and modelled parts\nresolved vs. modeled sub-grid scale quantites, e.g. k_sgs and K for kinetic energy"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#temporal-averaging",
+    "href": "05_Turbulence/03_les_equations.html#temporal-averaging",
+    "title": "LES Equations",
+    "section": "",
+    "text": "definition, illustrative figure with u(t) = u_mean + u_fluct"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#spatial-filtering",
+    "href": "05_Turbulence/03_les_equations.html#spatial-filtering",
+    "title": "LES Equations",
+    "section": "",
+    "text": "using a filter width \\(\\Delta\\), define a “box” filtered quantity \\(\\overline{\\phi}\\)\n\\[\n\\overline{\\phi}(x, y, z, t) \\equiv \\frac{1}{V_c}\n\\int_{x - \\delta x / 2}^{x + \\delta x / 2}\n\\int_{y - \\delta y / 2}^{y + \\delta y / 2}\n\\int_{z - \\delta z / 2}^{z + \\delta z / 2}\n\\phi(x', y', z', t) \\, \\mathrm{d}x' \\, \\mathrm{d}y' \\, \\mathrm{d}z'\n\\]\nFavre averaging for variable density\n\\[\n\\overline{\\rho} \\, \\widetilde{\\phi} \\equiv \\overline{\\rho \\phi} \\quad \\Rightarrow \\quad \\widetilde{\\phi} \\equiv \\frac{\\overline{\\rho \\phi}}{\\overline{\\rho}}\n\\]\nneeded, when density is not constant, as otherwise conservation properties may not be conserved"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#filtered-fields-order-matters",
+    "href": "05_Turbulence/03_les_equations.html#filtered-fields-order-matters",
+    "title": "LES Equations",
+    "section": "",
+    "text": "mean (filter) of the square vs. square of the mean (filter)\n\n\n\nFiltering and squaring do not commute.\nThis matters in turbulence modeling.\nWe filtered a high-frequency periodic field:\n\nGaussian filter\n\\[\\Delta = 0.1\\,L\\]\n\\[\\overline{u^2} \\neq \\bar{u}^2\\]\n\nTherefore we cannot simply use resolved quantities for nonlinear terms\nWe require a “subgrid model” to account for the residual\n\n\n\n\n\nFiltered Comparison"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#exercise-filter-a-given-function",
+    "href": "05_Turbulence/03_les_equations.html#exercise-filter-a-given-function",
+    "title": "LES Equations",
+    "section": "",
+    "text": "is this a good / needed exercise?\nexercise with simple numbers, done on paper\ngiven (e.g. three value pairs) u and rho, compute u_bar and u_tilde and u_rho_bar\ncheck for for total momentum with / without favre filter\n\n\n\nCell\n\\(\\rho\\) (kg/m^3)\n\\(u\\) (m/s)\n\\(\\rho u\\) (kg/m^2/s)\n\n\n\n\n1\n1.0\n10.0\n10.0\n\n\n2\n10.0\n1.0\n10.0\n\n\n3\n1.0\n10.0\n10.0"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#les-momentum-equation-i",
+    "href": "05_Turbulence/03_les_equations.html#les-momentum-equation-i",
+    "title": "LES Equations",
+    "section": "",
+    "text": "DNS equation (without mass source, external forces)\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nuse spatial filter, derivatives and filtering commute\n\\[\n\\frac{\\partial \\overline{\\rho u_i}}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} (\\overline{\\rho u_i u_j})\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau_{ij}}}{\\partial x_j}\n+ \\overline{\\rho} g_i + \\overline{f_{d,i}} + \\overline{\\dot{m}'''_{\\text{b}} u_{\\text{b},i}}\n\\]\nProblem: \\(\\overline{\\rho u_i u_j}\\)\nUse Favre filter: \\(\\overline{\\rho} \\, \\widetilde{{u}_i {u}_j}\\)"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#les-momentum-equation-ii",
+    "href": "05_Turbulence/03_les_equations.html#les-momentum-equation-ii",
+    "title": "LES Equations",
+    "section": "",
+    "text": "\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\widetilde{{u}_i {u}_j} \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{d,i}\n+ \\overline{\\dot{m}'''_b} \\, \\tilde{u}_{b,i}\n\\]\nall primitve variables, but \\(\\widetilde{{u}_i {u}_j} \\neq\\tilde{u}_i\\tilde{u}_j\\)\nfind closure, but defining a sub-grid scale stress \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\text{sgs}} \\equiv \\overline{\\rho} \\left( \\widetilde{u_i u_j} - \\tilde{u}_i \\tilde{u}_j \\right)\n\\]\nthis leads to the LES momentum equation\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n- \\frac{\\partial \\tau^{\\mathrm{sgs}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#turbulent-viscosity",
+    "href": "05_Turbulence/03_les_equations.html#turbulent-viscosity",
+    "title": "LES Equations",
+    "section": "",
+    "text": "decompose \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\mathrm{dev}} \\equiv \\overline{\\tau}_{ij} + \\tau^{\\mathrm{sgs}}_{ij}\n- \\frac{1}{3} \\tau^{\\mathrm{sgs}}_{kk} \\delta_{ij}\n= -2 (\\mu + \\mu_t) \\left( \\widetilde{S}_{ij} - \\frac{1}{3} (\\nabla \\cdot \\tilde{\\mathbf{u}}) \\delta_{ij} \\right)\n\\]\nturbulent viscosity \\(\\mu_t\\) must be modelled\nwe absorb the trace of the sub-grid stress, which is related to the sub-grid kinetic energy, \\(k_{sgs}\\), into the pressure as follows\n\\[\nk_{\\mathrm{sgs}} \\equiv \\frac{1}{2} \\tau_{kk}^{\\mathrm{sgs}}\n\\quad ; \\quad\n\\bar{p} \\equiv \\overline{p} + \\frac{2}{3} k_{\\mathrm{sgs}}\n\\]\nleads to apparently same equations as DNS\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#transport-of-kinetic-energy",
+    "href": "05_Turbulence/03_les_equations.html#transport-of-kinetic-energy",
+    "title": "LES Equations",
+    "section": "",
+    "text": "resolved kinetic energy: \\(K \\equiv \\frac{1}{2} \\tilde{u}_i \\tilde{u}_i\\)\n\\[\n\\overline{\\rho} \\,\\frac{D K}{D t}\n= -\\tilde{u}_i \\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\tilde{u}_i \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nand\n\\[\n\\overline{\\rho} \\, \\frac{D K}{D t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\left[ \\bar{p} \\, \\delta_{ij} + \\tau^{\\mathrm{dev}}_{ij} \\right] \\tilde{u}_i \\right)\n= \\bar{p} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_i}\n+ \\tau^{\\mathrm{dev}}_{ij} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nHere let’s put an image of the Kolmogorov spectrum with intetral of resolved \\(K\\) and subgrid \\(k_{sgs}\\)."
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#transport-of-chemical-species",
+    "href": "05_Turbulence/03_les_equations.html#transport-of-chemical-species",
+    "title": "LES Equations",
+    "section": "",
+    "text": "\\[\n\\frac{(\\rho Z_\\alpha)}{\\partial t} + \\frac{\\partial (\\rho Z_\\alpha u_j)}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\rho D_\\alpha \\frac{\\partial Z_\\alpha}{\\partial x_j}\\right)\n+ \\dot{m}_\\alpha''' + \\dot{m}_{\\rm b,\\alpha}'''\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\widetilde{Z_\\alpha u_j})}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\tilde{Z}_\\alpha \\tilde{u}_j)}{\\partial x_j}\n= - \\frac{\\partial J_{\\alpha,j}^{sgs}}{\\partial x_j}\n+ \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\nwhere\n\n\n\\[\nJ_{\\alpha,j}^{sgs} \\equiv \\overline{\\rho} (\\widetilde{Z_\\alpha u_j} - \\tilde{Z}_\\alpha \\tilde{u}_j)\n\\]\n\n\n\n\\(J_{\\alpha,j}^{sgs}\\) is unclosed\n\\(\\overline{\\dot{m}_\\alpha'''}\\) is unclosed and determines heat release rate!"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#transport-of-sensible-enthalpy",
+    "href": "05_Turbulence/03_les_equations.html#transport-of-sensible-enthalpy",
+    "title": "LES Equations",
+    "section": "",
+    "text": "\\[\n\\frac{\\partial (\\rho h_s)}{\\partial t}\n+ \\frac{(\\rho h_s u_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''}{\\partial x_j}\n- \\frac{\\partial \\dot{q}_{r,j}''}{\\partial x_j}\n+ \\dot{q}''' + \\dot{q}_b'''\n\\]\n\\[\n\\frac{\\partial (\\overline{\\rho} \\tilde{h}_s)}{\\partial t}\n+ \\frac{(\\overline{\\rho} \\tilde{h}_s \\tilde{u}_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''^{sgs}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_j''}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_{r,j}''}}{\\partial x_j}\n+ \\overline{\\dot{q}'''} + \\overline{\\dot{q}_b'''}\n\\]\nwhere\n\n\n\\[\n\\dot{q}_j''^{sgs} \\equiv \\overline{\\rho}\\left(\\widetilde{h_s u_j}-\\tilde{h}_s \\tilde{u}_j\\right)\n\\]\n\\[\n\\overline{\\dot{q}_j''} = - \\overline{k \\frac{\\partial T}{\\partial x_j}} - \\overline{ \\sum_\\alpha h_{s,\\alpha} \\rho D_\\alpha[T] \\frac{\\partial Z_\\alpha}{\\partial x_j}}\n\\]\n\n\n\n\\(\\dot{q}_j''^{sgs}\\) is unclosed\n\\(\\overline{\\dot{q}_j''}\\) is unclosed and important at the wall"
+  },
+  {
+    "objectID": "05_Turbulence/03_les_equations.html#thermal-coduction-and-species-diffusion",
+    "href": "05_Turbulence/03_les_equations.html#thermal-coduction-and-species-diffusion",
+    "title": "LES Equations",
+    "section": "",
+    "text": "\\[\nk_t = \\frac{\\mu_t c_p}{\\mathrm{Pr}_t}\n\\]\nand\n\\[\n(\\rho D)_t = \\frac{\\mu_t}{\\mathrm{Sc}_t}\n\\]\nwith the assumption / choice of \\(\\mathrm{Pr}_t = \\mathrm{Sc}_t\\) = const. = 0.5"
   },
   {
     "objectID": "05_Turbulence/05_boundary_layers.html",
@@ -700,315 +1005,17 @@
     "text": "t = 500 s"
   },
   {
-    "objectID": "05_Turbulence/03_les_equations.html",
-    "href": "05_Turbulence/03_les_equations.html",
-    "title": "LES Equations",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Test",
     "section": "",
-    "text": "figure with energy specturm illustrating the resolved and modelled parts\nresolved vs. modeled sub-grid scale quantites, e.g. k_sgs and K for kinetic energy\n\n\n\n\ndefinition, illustrative figure with u(t) = u_mean + u_fluct\n\n\n\nusing a filter width \\(\\Delta\\), define a “box” filtered quantity \\(\\overline{\\phi}\\)\n\\[\n\\overline{\\phi}(x, y, z, t) \\equiv \\frac{1}{V_c}\n\\int_{x - \\delta x / 2}^{x + \\delta x / 2}\n\\int_{y - \\delta y / 2}^{y + \\delta y / 2}\n\\int_{z - \\delta z / 2}^{z + \\delta z / 2}\n\\phi(x', y', z', t) \\, \\mathrm{d}x' \\, \\mathrm{d}y' \\, \\mathrm{d}z'\n\\]\nFavre averaging for variable density\n\\[\n\\overline{\\rho} \\, \\widetilde{\\phi} \\equiv \\overline{\\rho \\phi} \\quad \\Rightarrow \\quad \\widetilde{\\phi} \\equiv \\frac{\\overline{\\rho \\phi}}{\\overline{\\rho}}\n\\]\nneeded, when density is not constant, as otherwise conservation properties may not be conserved\n\n\n\nmean (filter) of the square vs. square of the mean (filter)\n\n\n\nFiltering and squaring do not commute.\nThis matters in turbulence modeling.\nWe filtered a high-frequency periodic field:\n\nGaussian filter\n\\[\\Delta = 0.1\\,L\\]\n\\[\\overline{u^2} \\neq \\bar{u}^2\\]\n\nTherefore we cannot simply use resolved quantities for nonlinear terms\nWe require a “subgrid model” to account for the residual\n\n\n\n\n\nFiltered Comparison\n\n\n\n\n\n\n\nis this a good / needed exercise?\nexercise with simple numbers, done on paper\ngiven (e.g. three value pairs) u and rho, compute u_bar and u_tilde and u_rho_bar\ncheck for for total momentum with / without favre filter\n\n\n\nCell\n\\(\\rho\\) (kg/m^3)\n\\(u\\) (m/s)\n\\(\\rho u\\) (kg/m^2/s)\n\n\n\n\n1\n1.0\n10.0\n10.0\n\n\n2\n10.0\n1.0\n10.0\n\n\n3\n1.0\n10.0\n10.0\n\n\n\n\n\n\nDNS equation (without mass source, external forces)\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nuse spatial filter, derivatives and filtering commute\n\\[\n\\frac{\\partial \\overline{\\rho u_i}}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} (\\overline{\\rho u_i u_j})\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau_{ij}}}{\\partial x_j}\n+ \\overline{\\rho} g_i + \\overline{f_{d,i}} + \\overline{\\dot{m}'''_{\\text{b}} u_{\\text{b},i}}\n\\]\nProblem: \\(\\overline{\\rho u_i u_j}\\)\nUse Favre filter: \\(\\overline{\\rho} \\, \\widetilde{{u}_i {u}_j}\\)\n\n\n\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\widetilde{{u}_i {u}_j} \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{d,i}\n+ \\overline{\\dot{m}'''_b} \\, \\tilde{u}_{b,i}\n\\]\nall primitve variables, but \\(\\widetilde{{u}_i {u}_j} \\neq\\tilde{u}_i\\tilde{u}_j\\)\nfind closure, but defining a sub-grid scale stress \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\text{sgs}} \\equiv \\overline{\\rho} \\left( \\widetilde{u_i u_j} - \\tilde{u}_i \\tilde{u}_j \\right)\n\\]\nthis leads to the LES momentum equation\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n- \\frac{\\partial \\tau^{\\mathrm{sgs}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]\n\n\n\ndecompose \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\mathrm{dev}} \\equiv \\overline{\\tau}_{ij} + \\tau^{\\mathrm{sgs}}_{ij}\n- \\frac{1}{3} \\tau^{\\mathrm{sgs}}_{kk} \\delta_{ij}\n= -2 (\\mu + \\mu_t) \\left( \\widetilde{S}_{ij} - \\frac{1}{3} (\\nabla \\cdot \\tilde{\\mathbf{u}}) \\delta_{ij} \\right)\n\\]\nturbulent viscosity \\(\\mu_t\\) must be modelled\nwe absorb the trace of the sub-grid stress, which is related to the sub-grid kinetic energy, \\(k_{sgs}\\), into the pressure as follows\n\\[\nk_{\\mathrm{sgs}} \\equiv \\frac{1}{2} \\tau_{kk}^{\\mathrm{sgs}}\n\\quad ; \\quad\n\\bar{p} \\equiv \\overline{p} + \\frac{2}{3} k_{\\mathrm{sgs}}\n\\]\nleads to apparently same equations as DNS\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]\n\n\n\nresolved kinetic energy: \\(K \\equiv \\frac{1}{2} \\tilde{u}_i \\tilde{u}_i\\)\n\\[\n\\overline{\\rho} \\,\\frac{D K}{D t}\n= -\\tilde{u}_i \\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\tilde{u}_i \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nand\n\\[\n\\overline{\\rho} \\, \\frac{D K}{D t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\left[ \\bar{p} \\, \\delta_{ij} + \\tau^{\\mathrm{dev}}_{ij} \\right] \\tilde{u}_i \\right)\n= \\bar{p} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_i}\n+ \\tau^{\\mathrm{dev}}_{ij} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nHere let’s put an image of the Kolmogorov spectrum with intetral of resolved \\(K\\) and subgrid \\(k_{sgs}\\).\n\n\n\n\\[\n\\frac{(\\rho Z_\\alpha)}{\\partial t} + \\frac{\\partial (\\rho Z_\\alpha u_j)}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\rho D_\\alpha \\frac{\\partial Z_\\alpha}{\\partial x_j}\\right)\n+ \\dot{m}_\\alpha''' + \\dot{m}_{\\rm b,\\alpha}'''\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\widetilde{Z_\\alpha u_j})}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\tilde{Z}_\\alpha \\tilde{u}_j)}{\\partial x_j}\n= - \\frac{\\partial J_{\\alpha,j}^{sgs}}{\\partial x_j}\n+ \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\nwhere\n\n\n\\[\nJ_{\\alpha,j}^{sgs} \\equiv \\overline{\\rho} (\\widetilde{Z_\\alpha u_j} - \\tilde{Z}_\\alpha \\tilde{u}_j)\n\\]\n\n\n\n\\(J_{\\alpha,j}^{sgs}\\) is unclosed\n\\(\\overline{\\dot{m}_\\alpha'''}\\) is unclosed and determines heat release rate!\n\n\n\n\n\n\n\\[\n\\frac{\\partial (\\rho h_s)}{\\partial t}\n+ \\frac{(\\rho h_s u_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''}{\\partial x_j}\n- \\frac{\\partial \\dot{q}_{r,j}''}{\\partial x_j}\n+ \\dot{q}''' + \\dot{q}_b'''\n\\]\n\\[\n\\frac{\\partial (\\overline{\\rho} \\tilde{h}_s)}{\\partial t}\n+ \\frac{(\\overline{\\rho} \\tilde{h}_s \\tilde{u}_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''^{sgs}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_j''}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_{r,j}''}}{\\partial x_j}\n+ \\overline{\\dot{q}'''} + \\overline{\\dot{q}_b'''}\n\\]\nwhere\n\n\n\\[\n\\dot{q}_j''^{sgs} \\equiv \\overline{\\rho}\\left(\\widetilde{h_s u_j}-\\tilde{h}_s \\tilde{u}_j\\right)\n\\]\n\\[\n\\overline{\\dot{q}_j''} = - \\overline{k \\frac{\\partial T}{\\partial x_j}} - \\overline{ \\sum_\\alpha h_{s,\\alpha} \\rho D_\\alpha[T] \\frac{\\partial Z_\\alpha}{\\partial x_j}}\n\\]\n\n\n\n\\(\\dot{q}_j''^{sgs}\\) is unclosed\n\\(\\overline{\\dot{q}_j''}\\) is unclosed and important at the wall\n\n\n\n\n\n\n\\[\nk_t = \\frac{\\mu_t c_p}{\\mathrm{Pr}_t}\n\\]\nand\n\\[\n(\\rho D)_t = \\frac{\\mu_t}{\\mathrm{Sc}_t}\n\\]\nwith the assumption / choice of \\(\\mathrm{Pr}_t = \\mathrm{Sc}_t\\) = const. = 0.5"
+    "text": "Test\nhghgh"
   },
   {
-    "objectID": "05_Turbulence/03_les_equations.html#idea-subgrid-scale-sgs-modelling",
-    "href": "05_Turbulence/03_les_equations.html#idea-subgrid-scale-sgs-modelling",
-    "title": "LES Equations",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science for Biology Workshop Series",
     "section": "",
-    "text": "figure with energy specturm illustrating the resolved and modelled parts\nresolved vs. modeled sub-grid scale quantites, e.g. k_sgs and K for kinetic energy"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#temporal-averaging",
-    "href": "05_Turbulence/03_les_equations.html#temporal-averaging",
-    "title": "LES Equations",
-    "section": "",
-    "text": "definition, illustrative figure with u(t) = u_mean + u_fluct"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#spatial-filtering",
-    "href": "05_Turbulence/03_les_equations.html#spatial-filtering",
-    "title": "LES Equations",
-    "section": "",
-    "text": "using a filter width \\(\\Delta\\), define a “box” filtered quantity \\(\\overline{\\phi}\\)\n\\[\n\\overline{\\phi}(x, y, z, t) \\equiv \\frac{1}{V_c}\n\\int_{x - \\delta x / 2}^{x + \\delta x / 2}\n\\int_{y - \\delta y / 2}^{y + \\delta y / 2}\n\\int_{z - \\delta z / 2}^{z + \\delta z / 2}\n\\phi(x', y', z', t) \\, \\mathrm{d}x' \\, \\mathrm{d}y' \\, \\mathrm{d}z'\n\\]\nFavre averaging for variable density\n\\[\n\\overline{\\rho} \\, \\widetilde{\\phi} \\equiv \\overline{\\rho \\phi} \\quad \\Rightarrow \\quad \\widetilde{\\phi} \\equiv \\frac{\\overline{\\rho \\phi}}{\\overline{\\rho}}\n\\]\nneeded, when density is not constant, as otherwise conservation properties may not be conserved"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#filtered-fields-order-matters",
-    "href": "05_Turbulence/03_les_equations.html#filtered-fields-order-matters",
-    "title": "LES Equations",
-    "section": "",
-    "text": "mean (filter) of the square vs. square of the mean (filter)\n\n\n\nFiltering and squaring do not commute.\nThis matters in turbulence modeling.\nWe filtered a high-frequency periodic field:\n\nGaussian filter\n\\[\\Delta = 0.1\\,L\\]\n\\[\\overline{u^2} \\neq \\bar{u}^2\\]\n\nTherefore we cannot simply use resolved quantities for nonlinear terms\nWe require a “subgrid model” to account for the residual\n\n\n\n\n\nFiltered Comparison"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#exercise-filter-a-given-function",
-    "href": "05_Turbulence/03_les_equations.html#exercise-filter-a-given-function",
-    "title": "LES Equations",
-    "section": "",
-    "text": "is this a good / needed exercise?\nexercise with simple numbers, done on paper\ngiven (e.g. three value pairs) u and rho, compute u_bar and u_tilde and u_rho_bar\ncheck for for total momentum with / without favre filter\n\n\n\nCell\n\\(\\rho\\) (kg/m^3)\n\\(u\\) (m/s)\n\\(\\rho u\\) (kg/m^2/s)\n\n\n\n\n1\n1.0\n10.0\n10.0\n\n\n2\n10.0\n1.0\n10.0\n\n\n3\n1.0\n10.0\n10.0"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#les-momentum-equation-i",
-    "href": "05_Turbulence/03_les_equations.html#les-momentum-equation-i",
-    "title": "LES Equations",
-    "section": "",
-    "text": "DNS equation (without mass source, external forces)\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nuse spatial filter, derivatives and filtering commute\n\\[\n\\frac{\\partial \\overline{\\rho u_i}}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} (\\overline{\\rho u_i u_j})\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau_{ij}}}{\\partial x_j}\n+ \\overline{\\rho} g_i + \\overline{f_{d,i}} + \\overline{\\dot{m}'''_{\\text{b}} u_{\\text{b},i}}\n\\]\nProblem: \\(\\overline{\\rho u_i u_j}\\)\nUse Favre filter: \\(\\overline{\\rho} \\, \\widetilde{{u}_i {u}_j}\\)"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#les-momentum-equation-ii",
-    "href": "05_Turbulence/03_les_equations.html#les-momentum-equation-ii",
-    "title": "LES Equations",
-    "section": "",
-    "text": "\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\widetilde{{u}_i {u}_j} \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{d,i}\n+ \\overline{\\dot{m}'''_b} \\, \\tilde{u}_{b,i}\n\\]\nall primitve variables, but \\(\\widetilde{{u}_i {u}_j} \\neq\\tilde{u}_i\\tilde{u}_j\\)\nfind closure, but defining a sub-grid scale stress \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\text{sgs}} \\equiv \\overline{\\rho} \\left( \\widetilde{u_i u_j} - \\tilde{u}_i \\tilde{u}_j \\right)\n\\]\nthis leads to the LES momentum equation\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\overline{p}}{\\partial x_i}\n- \\frac{\\partial \\overline{\\tau}_{ij}}{\\partial x_j}\n- \\frac{\\partial \\tau^{\\mathrm{sgs}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#turbulent-viscosity",
-    "href": "05_Turbulence/03_les_equations.html#turbulent-viscosity",
-    "title": "LES Equations",
-    "section": "",
-    "text": "decompose \\(\\tau_{ij}^{\\text{sgs}}\\)\n\\[\n\\tau_{ij}^{\\mathrm{dev}} \\equiv \\overline{\\tau}_{ij} + \\tau^{\\mathrm{sgs}}_{ij}\n- \\frac{1}{3} \\tau^{\\mathrm{sgs}}_{kk} \\delta_{ij}\n= -2 (\\mu + \\mu_t) \\left( \\widetilde{S}_{ij} - \\frac{1}{3} (\\nabla \\cdot \\tilde{\\mathbf{u}}) \\delta_{ij} \\right)\n\\]\nturbulent viscosity \\(\\mu_t\\) must be modelled\nwe absorb the trace of the sub-grid stress, which is related to the sub-grid kinetic energy, \\(k_{sgs}\\), into the pressure as follows\n\\[\nk_{\\mathrm{sgs}} \\equiv \\frac{1}{2} \\tau_{kk}^{\\mathrm{sgs}}\n\\quad ; \\quad\n\\bar{p} \\equiv \\overline{p} + \\frac{2}{3} k_{\\mathrm{sgs}}\n\\]\nleads to apparently same equations as DNS\n\\[\n\\frac{\\partial \\overline{\\rho} \\, \\tilde{u}_i}{\\partial t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\overline{\\rho} \\, \\tilde{u}_i \\tilde{u}_j \\right)\n= -\\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ \\overline{\\rho} \\, g_i\n+ \\overline{f}_{\\mathrm{d},i}\n+ \\overline{\\dot{m}'''_{\\mathrm{b}}} \\, \\tilde{u}_{\\mathrm{b},i}\n\\]"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#transport-of-kinetic-energy",
-    "href": "05_Turbulence/03_les_equations.html#transport-of-kinetic-energy",
-    "title": "LES Equations",
-    "section": "",
-    "text": "resolved kinetic energy: \\(K \\equiv \\frac{1}{2} \\tilde{u}_i \\tilde{u}_i\\)\n\\[\n\\overline{\\rho} \\,\\frac{D K}{D t}\n= -\\tilde{u}_i \\frac{\\partial \\bar{p}}{\\partial x_i}\n- \\tilde{u}_i \\frac{\\partial \\tau^{\\mathrm{dev}}_{ij}}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nand\n\\[\n\\overline{\\rho} \\, \\frac{D K}{D t}\n+ \\frac{\\partial}{\\partial x_j} \\left( \\left[ \\bar{p} \\, \\delta_{ij} + \\tau^{\\mathrm{dev}}_{ij} \\right] \\tilde{u}_i \\right)\n= \\bar{p} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_i}\n+ \\tau^{\\mathrm{dev}}_{ij} \\, \\frac{\\partial \\tilde{u}_i}{\\partial x_j}\n+ (\\overline{\\rho} \\, g_i + \\overline{f}_{\\mathrm{b},i}) \\tilde{u}_i\n\\]\nHere let’s put an image of the Kolmogorov spectrum with intetral of resolved \\(K\\) and subgrid \\(k_{sgs}\\)."
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#transport-of-chemical-species",
-    "href": "05_Turbulence/03_les_equations.html#transport-of-chemical-species",
-    "title": "LES Equations",
-    "section": "",
-    "text": "\\[\n\\frac{(\\rho Z_\\alpha)}{\\partial t} + \\frac{\\partial (\\rho Z_\\alpha u_j)}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\rho D_\\alpha \\frac{\\partial Z_\\alpha}{\\partial x_j}\\right)\n+ \\dot{m}_\\alpha''' + \\dot{m}_{\\rm b,\\alpha}'''\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\widetilde{Z_\\alpha u_j})}{\\partial x_j}\n= \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\n\\[\n\\frac{(\\overline{\\rho} \\tilde{Z}_\\alpha)}{\\partial t} + \\frac{\\partial (\\overline{\\rho} \\tilde{Z}_\\alpha \\tilde{u}_j)}{\\partial x_j}\n= - \\frac{\\partial J_{\\alpha,j}^{sgs}}{\\partial x_j}\n+ \\frac{\\partial}{\\partial x_j}\\left(\\overline{\\rho} D_\\alpha[\\tilde{T}] \\frac{\\partial \\tilde{Z}_\\alpha}{\\partial x_j}\\right)\n+ \\overline{\\dot{m}_\\alpha'''} + \\overline{\\dot{m}_{\\rm b,\\alpha}'''}\n\\]\nwhere\n\n\n\\[\nJ_{\\alpha,j}^{sgs} \\equiv \\overline{\\rho} (\\widetilde{Z_\\alpha u_j} - \\tilde{Z}_\\alpha \\tilde{u}_j)\n\\]\n\n\n\n\\(J_{\\alpha,j}^{sgs}\\) is unclosed\n\\(\\overline{\\dot{m}_\\alpha'''}\\) is unclosed and determines heat release rate!"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#transport-of-sensible-enthalpy",
-    "href": "05_Turbulence/03_les_equations.html#transport-of-sensible-enthalpy",
-    "title": "LES Equations",
-    "section": "",
-    "text": "\\[\n\\frac{\\partial (\\rho h_s)}{\\partial t}\n+ \\frac{(\\rho h_s u_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''}{\\partial x_j}\n- \\frac{\\partial \\dot{q}_{r,j}''}{\\partial x_j}\n+ \\dot{q}''' + \\dot{q}_b'''\n\\]\n\\[\n\\frac{\\partial (\\overline{\\rho} \\tilde{h}_s)}{\\partial t}\n+ \\frac{(\\overline{\\rho} \\tilde{h}_s \\tilde{u}_j)}{\\partial x_j}\n= \\frac{\\mathrm{D} \\bar{p}}{\\mathrm{D} t}\n- \\frac{\\partial \\dot{q}_j''^{sgs}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_j''}}{\\partial x_j}\n- \\frac{\\partial \\overline{\\dot{q}_{r,j}''}}{\\partial x_j}\n+ \\overline{\\dot{q}'''} + \\overline{\\dot{q}_b'''}\n\\]\nwhere\n\n\n\\[\n\\dot{q}_j''^{sgs} \\equiv \\overline{\\rho}\\left(\\widetilde{h_s u_j}-\\tilde{h}_s \\tilde{u}_j\\right)\n\\]\n\\[\n\\overline{\\dot{q}_j''} = - \\overline{k \\frac{\\partial T}{\\partial x_j}} - \\overline{ \\sum_\\alpha h_{s,\\alpha} \\rho D_\\alpha[T] \\frac{\\partial Z_\\alpha}{\\partial x_j}}\n\\]\n\n\n\n\\(\\dot{q}_j''^{sgs}\\) is unclosed\n\\(\\overline{\\dot{q}_j''}\\) is unclosed and important at the wall"
-  },
-  {
-    "objectID": "05_Turbulence/03_les_equations.html#thermal-coduction-and-species-diffusion",
-    "href": "05_Turbulence/03_les_equations.html#thermal-coduction-and-species-diffusion",
-    "title": "LES Equations",
-    "section": "",
-    "text": "\\[\nk_t = \\frac{\\mu_t c_p}{\\mathrm{Pr}_t}\n\\]\nand\n\\[\n(\\rho D)_t = \\frac{\\mu_t}{\\mathrm{Sc}_t}\n\\]\nwith the assumption / choice of \\(\\mathrm{Pr}_t = \\mathrm{Sc}_t\\) = const. = 0.5"
-  },
-  {
-    "objectID": "05_Turbulence/01_phenomena.html",
-    "href": "05_Turbulence/01_phenomena.html",
-    "title": "Phenomena",
-    "section": "",
-    "text": "Source: YouTube\n\n\n\n\n\nIn general:\n\nIntermittency\nScalar Mixing\nEddies\nstructure and energy Cascade\nDissipation at small scales\nChaotic, yet structured\n\nIn fire dynamics:\n\nmixing for combustion\nfire plume dynamics\nenhance of heat and mass transfer\n\n\n\n\n\nSource: Wikimedia Commons\n\n\n\n\n\n\n\npipe flow\nmagnitude velocity profile\nnon trivial normal velocities\ninstantanious velocity values (maybe from our plume measurements?)\n\n\n\ngiven instantanious velocity data, compute fluctuations"
-  },
-  {
-    "objectID": "05_Turbulence/01_phenomena.html#example-from-a-laminar-to-a-turbulent-flow",
-    "href": "05_Turbulence/01_phenomena.html#example-from-a-laminar-to-a-turbulent-flow",
-    "title": "Phenomena",
-    "section": "",
-    "text": "Source: YouTube"
-  },
-  {
-    "objectID": "05_Turbulence/01_phenomena.html#macroscopic-impact",
-    "href": "05_Turbulence/01_phenomena.html#macroscopic-impact",
-    "title": "Phenomena",
-    "section": "",
-    "text": "In general:\n\nIntermittency\nScalar Mixing\nEddies\nstructure and energy Cascade\nDissipation at small scales\nChaotic, yet structured\n\nIn fire dynamics:\n\nmixing for combustion\nfire plume dynamics\nenhance of heat and mass transfer\n\n\n\n\n\nSource: Wikimedia Commons"
-  },
-  {
-    "objectID": "05_Turbulence/01_phenomena.html#example",
-    "href": "05_Turbulence/01_phenomena.html#example",
-    "title": "Phenomena",
-    "section": "",
-    "text": "pipe flow\nmagnitude velocity profile\nnon trivial normal velocities\ninstantanious velocity values (maybe from our plume measurements?)"
-  },
-  {
-    "objectID": "05_Turbulence/01_phenomena.html#exercise-compute-fluctuation-spectrum",
-    "href": "05_Turbulence/01_phenomena.html#exercise-compute-fluctuation-spectrum",
-    "title": "Phenomena",
-    "section": "",
-    "text": "given instantanious velocity data, compute fluctuations"
-  },
-  {
-    "objectID": "05_Turbulence/00_overview.html",
-    "href": "05_Turbulence/00_overview.html",
-    "title": "Introduction and Overview",
-    "section": "",
-    "text": "Turbulence in Fire\n\n\nPrevious Knowledge\n\n\nCourse Learning Outcomes\n\n\n\n\n\n\nKnows Before\n\n\nMust Know\n\n\nShould Know\n\n\nNice to Know\n\n\n\n\nScientific competence; what does the student know about theory\n\n\nBasic fluid mechanics\n\n\nCan identify and describe three main types of modeling in CFD\n\n\nCan identify the relevant length and time scales in a flow scenario and relate these to turbulence scales\n\n\nDynamic models, etc.\n\n\n\n\nProfessional competence and skills; what the student knows and can do in practice\n\n\nRun FDS simulations\n\n\nSpecify FDS inputs for turbulence models\n\n\nEstimate resolution requirements for a practical fire scenario\n\n\nDerive closure models"
-  },
-  {
-    "objectID": "05_Turbulence/00_overview.html#teaching-goals",
-    "href": "05_Turbulence/00_overview.html#teaching-goals",
-    "title": "Introduction and Overview",
-    "section": "",
-    "text": "Turbulence in Fire\n\n\nPrevious Knowledge\n\n\nCourse Learning Outcomes\n\n\n\n\n\n\nKnows Before\n\n\nMust Know\n\n\nShould Know\n\n\nNice to Know\n\n\n\n\nScientific competence; what does the student know about theory\n\n\nBasic fluid mechanics\n\n\nCan identify and describe three main types of modeling in CFD\n\n\nCan identify the relevant length and time scales in a flow scenario and relate these to turbulence scales\n\n\nDynamic models, etc.\n\n\n\n\nProfessional competence and skills; what the student knows and can do in practice\n\n\nRun FDS simulations\n\n\nSpecify FDS inputs for turbulence models\n\n\nEstimate resolution requirements for a practical fire scenario\n\n\nDerive closure models"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html",
-    "href": "05_Turbulence/02_fundamentals.html",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Navier Stokes equation\nspecies equation\nenergy equation\n\n\n\n\n\n\n\nThe Reynolds number (Re) is the ratio of inertial to viscous forces in a fluid (element).\n\\[ \\text{Re} = \\frac{vL}{\\nu} = \\frac{\\rho v L}{\\mu} \\]\nWith:\n\nthe fluid density \\(\\rho\\), in \\(kg/m^3\\)\nthe flow velocity \\(v\\), in \\(m/s\\)\na characteristic length scale \\(L\\), in \\(m\\)\nthe dynamic \\(\\mu\\) and kinematic \\(\\nu\\) viscosity of the fluid, in \\(kg/(ms)\\) and \\(m^2/s\\)\n\n\n\n\nExample pipe flow?\n\nRe &lt; xxx : laminar\nRe &gt; xxx : turbulent\n\nExample, estimate Re for a candle and a pool fire\n\n\n\nDescription: One of the impact parameters on the flow structure behind an object is the Reynolds number (Re). A classical phenomenon is the Kármán vortex street. In this example, the impact of Re is qualitatively investigated.\nThe simulation geometry is a 2D domain with a main object (plate) and a small object to disturb the symmetry. There is an fixed inflow \\(v_0\\) boundary condition at \\(x_{\\text{min}}\\) and an open boundary condition at \\(x_{\\text{max}}\\). Both boundaries in z-direction are solid walls.\n\n\n\n\n\nOpen the input file vortex_street.fds and check for the values of inflow velocity \\(v_0\\), the geometry parameters \\(H_D\\) and \\(H_O\\), and the viscosity \\(\\nu\\) of the fluid.\nCalculate the Reynolds number for this setup.\nRun the execution of the provided FDS input file.\nVisualize the result, e.g., the y-component of the vorticity.\nAdjust the Reynolds number by a factor of 0.5 and 10 by adjusting the viscosity.\nCompare the results. What do you observe?\n\n\n\n\n\\[\nv_0 = 0.5 m/s\n\\]\n\\[\nH_O = 0.01 m\n\\]\n\\[\nRe = \\frac{v\\, L}{\\nu} = \\frac{v_0\\, H_O}{\\nu} = \\frac{5\\cdot 10^{-3}}{\\nu}\n\\]\n\n\n\n\\[\\nu = 12\\cdot 10^{-6} \\Rightarrow Re \\approx 416\\]\n\n\n\n\n\\[\\nu = 12\\cdot 10^{-5} \\Rightarrow Re \\approx 42\\]\n\n\n\n\n\\[\\nu = 6\\cdot 10^{-6} \\Rightarrow Re \\approx 833\\]\n\n\n\n\n\nIntegral scale\nIntertial scale\nKolmogorov scale\n\n\n\nAssumptions:\n\nUniversal, i.e. independet of how turbulence was generated\n(Local) isotropy\nEnergy cascade, kinetic energy is transported from large to small scales without losses, until it is dissipated at the smallest scales by viscosity\n\nKolmogorov Scales:\n\nlength: \\(\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\\)\ntime: \\(\\tau_\\eta = \\left( \\frac{\\nu}{\\varepsilon} \\right)^{1/2}\\)\nvelocity: \\(u_\\eta = (\\nu \\varepsilon)^{1/4}\\)\n\n\n\n\n\\[E(k) = C \\, \\varepsilon^{2/3} \\, k^{-5/3}\\]\n\n\n\n\n\n\n\n\ndirect numerical simulation of the Navier-Stokes equations, no subgrid turbulence model\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nthe Kolmogorov scale, \\(\\eta\\), needs to be resolved\n\\[\n\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\n\\]\ndissipation rate and strain rate tensor\n\\[\n\\varepsilon \\equiv \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}\n= 2\\mu \\left( S_{ij} S_{ij} - \\frac{1}{3} (\\nabla\\cdot\\mathbf{u})^2 \\right)\n\\quad;\\quad\nS_{ij} \\equiv \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right)\n\\]\n\n\n\nUse estimation of dissipation rate eps = U^3 / L\nU, L at large scale\neta approx L * Re^-3/4\ndo the small scales matter?\nHigh numerical resolution needed down to \\(\\eta\\)"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#governing-equations-needed-at-this-point",
-    "href": "05_Turbulence/02_fundamentals.html#governing-equations-needed-at-this-point",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Navier Stokes equation\nspecies equation\nenergy equation"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#reynolds-number",
-    "href": "05_Turbulence/02_fundamentals.html#reynolds-number",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "The Reynolds number (Re) is the ratio of inertial to viscous forces in a fluid (element).\n\\[ \\text{Re} = \\frac{vL}{\\nu} = \\frac{\\rho v L}{\\mu} \\]\nWith:\n\nthe fluid density \\(\\rho\\), in \\(kg/m^3\\)\nthe flow velocity \\(v\\), in \\(m/s\\)\na characteristic length scale \\(L\\), in \\(m\\)\nthe dynamic \\(\\mu\\) and kinematic \\(\\nu\\) viscosity of the fluid, in \\(kg/(ms)\\) and \\(m^2/s\\)"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#turbulence-characterisation-with-the-reynolds-number",
-    "href": "05_Turbulence/02_fundamentals.html#turbulence-characterisation-with-the-reynolds-number",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Example pipe flow?\n\nRe &lt; xxx : laminar\nRe &gt; xxx : turbulent\n\nExample, estimate Re for a candle and a pool fire"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-kármán-vortex-street",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-kármán-vortex-street",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Description: One of the impact parameters on the flow structure behind an object is the Reynolds number (Re). A classical phenomenon is the Kármán vortex street. In this example, the impact of Re is qualitatively investigated.\nThe simulation geometry is a 2D domain with a main object (plate) and a small object to disturb the symmetry. There is an fixed inflow \\(v_0\\) boundary condition at \\(x_{\\text{min}}\\) and an open boundary condition at \\(x_{\\text{max}}\\). Both boundaries in z-direction are solid walls."
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-tasks",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-tasks",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Open the input file vortex_street.fds and check for the values of inflow velocity \\(v_0\\), the geometry parameters \\(H_D\\) and \\(H_O\\), and the viscosity \\(\\nu\\) of the fluid.\nCalculate the Reynolds number for this setup.\nRun the execution of the provided FDS input file.\nVisualize the result, e.g., the y-component of the vorticity.\nAdjust the Reynolds number by a factor of 0.5 and 10 by adjusting the viscosity.\nCompare the results. What do you observe?"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-results",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "\\[\nv_0 = 0.5 m/s\n\\]\n\\[\nH_O = 0.01 m\n\\]\n\\[\nRe = \\frac{v\\, L}{\\nu} = \\frac{v_0\\, H_O}{\\nu} = \\frac{5\\cdot 10^{-3}}{\\nu}\n\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-1",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-results-1",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "\\[\\nu = 12\\cdot 10^{-6} \\Rightarrow Re \\approx 416\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-2",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-results-2",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "\\[\\nu = 12\\cdot 10^{-5} \\Rightarrow Re \\approx 42\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-results-3",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-results-3",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "\\[\\nu = 6\\cdot 10^{-6} \\Rightarrow Re \\approx 833\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#scales-in-turbulence",
-    "href": "05_Turbulence/02_fundamentals.html#scales-in-turbulence",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Integral scale\nIntertial scale\nKolmogorov scale"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#kolmogorov-theory",
-    "href": "05_Turbulence/02_fundamentals.html#kolmogorov-theory",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Assumptions:\n\nUniversal, i.e. independet of how turbulence was generated\n(Local) isotropy\nEnergy cascade, kinetic energy is transported from large to small scales without losses, until it is dissipated at the smallest scales by viscosity\n\nKolmogorov Scales:\n\nlength: \\(\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\\)\ntime: \\(\\tau_\\eta = \\left( \\frac{\\nu}{\\varepsilon} \\right)^{1/2}\\)\nvelocity: \\(u_\\eta = (\\nu \\varepsilon)^{1/4}\\)"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#energy-spectrum",
-    "href": "05_Turbulence/02_fundamentals.html#energy-spectrum",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "\\[E(k) = C \\, \\varepsilon^{2/3} \\, k^{-5/3}\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#dns",
-    "href": "05_Turbulence/02_fundamentals.html#dns",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "direct numerical simulation of the Navier-Stokes equations, no subgrid turbulence model\n\\[\n\\frac{\\partial \\rho u_i}{\\partial t} + \\frac{\\partial}{\\partial x_j} (\\rho u_i u_j)\n= -\\frac{\\partial p}{\\partial x_i} - \\frac{\\partial \\tau_{ij}}{\\partial x_j}\n+ \\rho g_i + f_{d,i} + \\dot{m}'''_{\\text{b}} u_{\\text{b},i}\n\\]\nthe Kolmogorov scale, \\(\\eta\\), needs to be resolved\n\\[\n\\eta = \\left( \\frac{\\nu^3}{\\varepsilon} \\right)^{1/4}\n\\]\ndissipation rate and strain rate tensor\n\\[\n\\varepsilon \\equiv \\tau_{ij} \\frac{\\partial u_i}{\\partial x_j}\n= 2\\mu \\left( S_{ij} S_{ij} - \\frac{1}{3} (\\nabla\\cdot\\mathbf{u})^2 \\right)\n\\quad;\\quad\nS_{ij} \\equiv \\frac{1}{2} \\left( \\frac{\\partial u_i}{\\partial x_j} + \\frac{\\partial u_j}{\\partial x_i} \\right)\n\\]"
-  },
-  {
-    "objectID": "05_Turbulence/02_fundamentals.html#exercise-estimate-eta",
-    "href": "05_Turbulence/02_fundamentals.html#exercise-estimate-eta",
-    "title": "Fundamentals Turbulence",
-    "section": "",
-    "text": "Use estimation of dissipation rate eps = U^3 / L\nU, L at large scale\neta approx L * Re^-3/4\ndo the small scales matter?\nHigh numerical resolution needed down to \\(\\eta\\)"
-  },
-  {
-    "objectID": "05_Turbulence/04_turbulent_viscosity.html",
-    "href": "05_Turbulence/04_turbulent_viscosity.html",
-    "title": "LES Turbulent Viscosity Models",
-    "section": "",
-    "text": "Description: An initial velocity field (file cbc32_uvw.csv) in a periodic cubic domain (length \\(L\\)) is used to compute the decay of the kinetic energy due to turbulence. The number of grid points \\(n\\) in all directions is 32.\n\n\n\n\n\n\n\n\n\\[\nL = 0.56549\\ m\n\\]\n\\[\nk_0 = \\frac{2\\pi}{L} = 11.11\\ m^{-1}\n\\]\n\\[\nk_{\\text{Nq}} = \\frac{k_0 \\cdot n}{2} = 177.77\\ m^{-1}\n\\]\n\n\n\n\n\n\nUse the FDS input file template (dec_turb_template.fds).\nRun the provided input file and visualize the velocity field (slices at domain boundary).\nAdd a device to monitor the mean kinetic energy in the whole volume.\n\nID = 'KE'\nQUANTITY = 'KINETIC ENERGY'\nSPATIAL_STATISTIC = 'MEAN'\n\nPlot the development of the mean kinetic energy as a function of time.\nCreate two additional cases:\n\n\nmolecular viscosity only\nno turbulent and no molecular viscosity\n\n\nPlot the development in all cases and add the following reference data:\n\nref_x = [0.0, 0.28, 0.67]\nref_y = [0.048, 0.0175, 0.0093]\n\n\n\n\n\n\n\nThe provided input file outputs the full velocity field at three selected times.\n&DUMP RAMP_UVW='times' /\n&RAMP ID='times', T=0.00 /\n&RAMP ID='times', T=0.28 /\n&RAMP ID='times', T=0.67 /\nUse the script plot_spectrum.py to compute and visualize the kinetic energy spectrum. Eventually, paths in the script need to be adjusted.\n\n\n\n\n\n\n\nsetup: shear flow, 2D, bounded, periodic\ncreation of vortices and kinetic energy\ngoal: ??"
-  },
-  {
-    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-decay-of-isotropic-turbulence",
-    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-decay-of-isotropic-turbulence",
-    "title": "LES Turbulent Viscosity Models",
-    "section": "",
-    "text": "Description: An initial velocity field (file cbc32_uvw.csv) in a periodic cubic domain (length \\(L\\)) is used to compute the decay of the kinetic energy due to turbulence. The number of grid points \\(n\\) in all directions is 32.\n\n\n\n\n\n\n\n\n\\[\nL = 0.56549\\ m\n\\]\n\\[\nk_0 = \\frac{2\\pi}{L} = 11.11\\ m^{-1}\n\\]\n\\[\nk_{\\text{Nq}} = \\frac{k_0 \\cdot n}{2} = 177.77\\ m^{-1}\n\\]"
-  },
-  {
-    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-i",
-    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-i",
-    "title": "LES Turbulent Viscosity Models",
-    "section": "",
-    "text": "Use the FDS input file template (dec_turb_template.fds).\nRun the provided input file and visualize the velocity field (slices at domain boundary).\nAdd a device to monitor the mean kinetic energy in the whole volume.\n\nID = 'KE'\nQUANTITY = 'KINETIC ENERGY'\nSPATIAL_STATISTIC = 'MEAN'\n\nPlot the development of the mean kinetic energy as a function of time.\nCreate two additional cases:\n\n\nmolecular viscosity only\nno turbulent and no molecular viscosity\n\n\nPlot the development in all cases and add the following reference data:\n\nref_x = [0.0, 0.28, 0.67]\nref_y = [0.048, 0.0175, 0.0093]"
-  },
-  {
-    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-ii",
-    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-task-ii",
-    "title": "LES Turbulent Viscosity Models",
-    "section": "",
-    "text": "The provided input file outputs the full velocity field at three selected times.\n&DUMP RAMP_UVW='times' /\n&RAMP ID='times', T=0.00 /\n&RAMP ID='times', T=0.28 /\n&RAMP ID='times', T=0.67 /\nUse the script plot_spectrum.py to compute and visualize the kinetic energy spectrum. Eventually, paths in the script need to be adjusted."
-  },
-  {
-    "objectID": "05_Turbulence/04_turbulent_viscosity.html#exercise-shear-flow",
-    "href": "05_Turbulence/04_turbulent_viscosity.html#exercise-shear-flow",
-    "title": "LES Turbulent Viscosity Models",
-    "section": "",
-    "text": "setup: shear flow, 2D, bounded, periodic\ncreation of vortices and kinetic energy\ngoal: ??"
-  },
-  {
-    "objectID": "05_Turbulence/08_summary.html",
-    "href": "05_Turbulence/08_summary.html",
-    "title": "Summary",
-    "section": "",
-    "text": "Key Parameter\n‘DNS’\n‘LES’\n‘VLES’\n‘SVLES’\n\n\n\n\nCFL_VELOCITY_NORM\n1\n1\n2\n3\n\n\nCHECK_VN\nT\nT\nT\nF\n\n\nFLUX_LIMITER\n‘CHARM’\n‘CHARM’\n‘SUPERBEE’\n‘SUPERBEE’\n\n\nCONSTANT_SPECIFIC_HEAT_RATIO\nF\nF\nF\nT\n\n\nEXTINCTION_MODEL\n2\n2\n1\n1\n\n\n\n\n\n\n\n\n\n\nBoundary layers\nWall functions\nInteraction of Turbulence with chemistry and radiation"
-  },
-  {
-    "objectID": "05_Turbulence/08_summary.html#simulation-modes-in-fds",
-    "href": "05_Turbulence/08_summary.html#simulation-modes-in-fds",
-    "title": "Summary",
-    "section": "",
-    "text": "Key Parameter\n‘DNS’\n‘LES’\n‘VLES’\n‘SVLES’\n\n\n\n\nCFL_VELOCITY_NORM\n1\n1\n2\n3\n\n\nCHECK_VN\nT\nT\nT\nF\n\n\nFLUX_LIMITER\n‘CHARM’\n‘CHARM’\n‘SUPERBEE’\n‘SUPERBEE’\n\n\nCONSTANT_SPECIFIC_HEAT_RATIO\nF\nF\nF\nT\n\n\nEXTINCTION_MODEL\n2\n2\n1\n1"
-  },
-  {
-    "objectID": "05_Turbulence/08_summary.html#not-covered",
-    "href": "05_Turbulence/08_summary.html#not-covered",
-    "title": "Summary",
-    "section": "",
-    "text": "Boundary layers\nWall functions\nInteraction of Turbulence with chemistry and radiation"
-  },
-  {
-    "objectID": "05_Turbulence/index.html",
-    "href": "05_Turbulence/index.html",
-    "title": "Turbulence",
-    "section": "",
-    "text": "Introductory text",
-    "crumbs": [
-      "One could do sections like this",
-      "05 Turbulence"
-    ]
+    "text": "Data Science for Biology Workshop Series\ndsdv"
   }
 ]
