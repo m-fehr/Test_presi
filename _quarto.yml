@@ -1,0 +1,51 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+  output-dir: docs
+
+from: markdown+emoji
+
+website:
+  title: "Summerschool"
+  page-navigation: true
+  navbar:
+    background: light
+    foreground: dark
+    right:
+      - text: "About"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/posit-conf-2023/quarto-r
+        aria-label: GitHub
+  sidebar:
+    - title: "Materials"
+      style: docked
+      align: left
+      contents:
+          - section: "One could do sections like this"
+            contents:
+            - text: "05 Turbulence"
+              href: 05_Turbulence/index.qmd
+            - text: "05 Turbulence"
+              href: 05_Turbulence/index.qmd
+          - section: "One could do sections like this"
+            contents:
+            - text: "05 Turbulence"
+              href: 05_Turbulence/index.qmd
+            - text: "05 Turbulence"
+              href: 05_Turbulence/index.qmd     
+  page-footer:
+    right: "This page is built with and [Quarto](https://quarto.org/)."
+    left: "&copy; 2023, Andrew Bray"
+
+format: 
+  html:
+    theme: [default]
+    toc: false
+    
+# Design tips:
+# 1. maggieappleton.com
+# 2. Palette: https://www.jpl.nasa.gov/images/the-grand-tour-jpl-travel-poster
+
+  

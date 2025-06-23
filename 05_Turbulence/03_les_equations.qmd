@@ -1,0 +1,286 @@
+# LES Equations
+
+## Idea: Subgrid Scale (SGS) Modelling
+
+figure with energy specturm illustrating the resolved and modelled parts
+
+resolved vs. modeled sub-grid scale quantites, e.g. k_sgs and K for kinetic energy
+
+![](./figs/Scales-DNS-LES.png)
+
+## Temporal Averaging
+
+definition, illustrative figure with u(t) = u_mean + u_fluct
+
+## Spatial Filtering
+
+using a filter width $\Delta$, define a "box" filtered quantity $\overline{\phi}$
+
+$$ 
+\overline{\phi}(x, y, z, t) \equiv \frac{1}{V_c}
+\int_{x - \delta x / 2}^{x + \delta x / 2}
+\int_{y - \delta y / 2}^{y + \delta y / 2}
+\int_{z - \delta z / 2}^{z + \delta z / 2}
+\phi(x', y', z', t) \, \mathrm{d}x' \, \mathrm{d}y' \, \mathrm{d}z'
+$$
+
+Favre averaging for variable density
+
+$$
+\overline{\rho} \, \widetilde{\phi} \equiv \overline{\rho \phi} \quad \Rightarrow \quad \widetilde{\phi} \equiv \frac{\overline{\rho \phi}}{\overline{\rho}}
+$$
+
+needed, when density is not constant, as otherwise conservation properties may not be conserved
+
+## Filtered Fields -- Order Matters
+
+mean (filter) of the square vs. square of the mean (filter)
+
+::: columns
+::: {.column width="50%"}
+- Filtering and squaring do **not** commute.
+- This matters in turbulence modeling.
+- We filtered a high-frequency periodic field:
+  - Gaussian filter
+  - $$\Delta = 0.1\,L$$
+  - $$\overline{u^2} \neq \bar{u}^2$$
+- Therefore we cannot simply use resolved quantities for nonlinear terms
+- We require a "subgrid model" to account for the residual
+:::
+
+::: {.column width="50%"}
+<div style="text-align: center;">
+  <img src="./figs/mean_square_vs_square_mean.png" width="100%">
+  <div style="font-size: 90%; margin-top: 0.5em;">Filtered Comparison</div>
+</div>
+:::
+:::
+
+## Exercise -- Filter a Given Function
+
+is this a good / needed exercise?
+
+exercise with simple numbers, done on paper
+
+given (e.g. three value pairs) u and rho, compute u_bar and u_tilde and u_rho_bar
+
+check for for total momentum with / without favre filter
+
+| Cell | $\rho$ (kg/m^3) | $u$ (m/s) | $\rho u$ (kg/m^2/s) |
+| ---- | --------------- | --------- | ------------------- |
+| 1    | 1.0             | 10.0      | 10.0                |
+| 2    | 10.0            | 1.0       | 10.0                |
+| 3    | 1.0             | 10.0      | 10.0                |
+
+
+## LES Momentum Equation (I)
+
+DNS equation (without mass source, external forces)
+
+$$ 
+\frac{\partial \rho u_i}{\partial t} + \frac{\partial}{\partial x_j} (\rho u_i u_j) 
+= -\frac{\partial p}{\partial x_i} - \frac{\partial \tau_{ij}}{\partial x_j} 
++ \rho g_i + f_{d,i} + \dot{m}'''_{\text{b}} u_{\text{b},i}
+$$
+
+
+use spatial filter, derivatives and filtering commute
+
+$$
+\frac{\partial \overline{\rho u_i}}{\partial t}
++ \frac{\partial}{\partial x_j} (\overline{\rho u_i u_j})
+= -\frac{\partial \overline{p}}{\partial x_i}
+- \frac{\partial \overline{\tau_{ij}}}{\partial x_j}
++ \overline{\rho} g_i + \overline{f_{d,i}} + \overline{\dot{m}'''_{\text{b}} u_{\text{b},i}}
+$$
+
+Problem: $\overline{\rho u_i u_j}$
+
+Use Favre filter: $\overline{\rho} \, \widetilde{{u}_i {u}_j}$
+
+## LES Momentum Equation (II)
+
+$$
+\frac{\partial \overline{\rho} \, \tilde{u}_i}{\partial t}
++ \frac{\partial}{\partial x_j} \left( \overline{\rho} \, \widetilde{{u}_i {u}_j} \right)
+= -\frac{\partial \overline{p}}{\partial x_i}
+- \frac{\partial \overline{\tau}_{ij}}{\partial x_j}
++ \overline{\rho} \, g_i
++ \overline{f}_{d,i}
++ \overline{\dot{m}'''_b} \, \tilde{u}_{b,i}
+$$
+
+
+all primitve variables, but $\widetilde{{u}_i {u}_j} \neq\tilde{u}_i\tilde{u}_j$
+
+find closure, but defining a sub-grid scale stress $\tau_{ij}^{\text{sgs}}$
+
+$$
+\tau_{ij}^{\text{sgs}} \equiv \overline{\rho} \left( \widetilde{u_i u_j} - \tilde{u}_i \tilde{u}_j \right)
+$$
+
+this leads to the LES momentum equation
+
+$$
+\frac{\partial \overline{\rho} \, \tilde{u}_i}{\partial t}
++ \frac{\partial}{\partial x_j} \left( \overline{\rho} \, \tilde{u}_i \tilde{u}_j \right)
+= -\frac{\partial \overline{p}}{\partial x_i}
+- \frac{\partial \overline{\tau}_{ij}}{\partial x_j}
+- \frac{\partial \tau^{\mathrm{sgs}}_{ij}}{\partial x_j}
++ \overline{\rho} \, g_i
++ \overline{f}_{\mathrm{d},i}
++ \overline{\dot{m}'''_{\mathrm{b}}} \, \tilde{u}_{\mathrm{b},i}
+$$
+
+## Turbulent Viscosity
+
+decompose $\tau_{ij}^{\text{sgs}}$
+
+$$
+\tau_{ij}^{\mathrm{dev}} \equiv \overline{\tau}_{ij} + \tau^{\mathrm{sgs}}_{ij} 
+- \frac{1}{3} \tau^{\mathrm{sgs}}_{kk} \delta_{ij}
+= -2 (\mu + \mu_t) \left( \widetilde{S}_{ij} - \frac{1}{3} (\nabla \cdot \tilde{\mathbf{u}}) \delta_{ij} \right)
+$$
+
+turbulent viscosity $\mu_t$ must be modelled
+
+we absorb the trace of the sub-grid stress, which is related to the sub-grid kinetic energy, $k_{sgs}$, into the pressure as follows
+
+$$
+k_{\mathrm{sgs}} \equiv \frac{1}{2} \tau_{kk}^{\mathrm{sgs}}
+\quad ; \quad
+\bar{p} \equiv \overline{p} + \frac{2}{3} k_{\mathrm{sgs}}
+$$
+
+leads to apparently same equations as DNS
+
+$$
+\frac{\partial \overline{\rho} \, \tilde{u}_i}{\partial t}
++ \frac{\partial}{\partial x_j} \left( \overline{\rho} \, \tilde{u}_i \tilde{u}_j \right)
+= -\frac{\partial \bar{p}}{\partial x_i}
+- \frac{\partial \tau^{\mathrm{dev}}_{ij}}{\partial x_j}
++ \overline{\rho} \, g_i
++ \overline{f}_{\mathrm{d},i}
++ \overline{\dot{m}'''_{\mathrm{b}}} \, \tilde{u}_{\mathrm{b},i}
+$$
+
+## Transport of Kinetic Energy
+
+resolved kinetic energy: $K \equiv \frac{1}{2} \tilde{u}_i \tilde{u}_i$
+
+$$
+\overline{\rho} \,\frac{D K}{D t}
+= -\tilde{u}_i \frac{\partial \bar{p}}{\partial x_i}
+- \tilde{u}_i \frac{\partial \tau^{\mathrm{dev}}_{ij}}{\partial x_j}
++ (\overline{\rho} \, g_i + \overline{f}_{\mathrm{b},i}) \tilde{u}_i
+$$
+
+and
+
+$$
+\overline{\rho} \, \frac{D K}{D t}
++ \frac{\partial}{\partial x_j} \left( \left[ \bar{p} \, \delta_{ij} + \tau^{\mathrm{dev}}_{ij} \right] \tilde{u}_i \right)
+= \bar{p} \, \frac{\partial \tilde{u}_i}{\partial x_i}
++ \tau^{\mathrm{dev}}_{ij} \, \frac{\partial \tilde{u}_i}{\partial x_j}
++ (\overline{\rho} \, g_i + \overline{f}_{\mathrm{b},i}) \tilde{u}_i
+$$
+
+Here let's put an image of the Kolmogorov spectrum with intetral of resolved $K$ and subgrid $k_{sgs}$.
+
+## Transport of Chemical Species
+
+$$
+\frac{(\rho Z_\alpha)}{\partial t} + \frac{\partial (\rho Z_\alpha u_j)}{\partial x_j}
+= \frac{\partial}{\partial x_j}\left(\rho D_\alpha \frac{\partial Z_\alpha}{\partial x_j}\right)
++ \dot{m}_\alpha''' + \dot{m}_{\rm b,\alpha}'''
+$$
+
+$$
+\frac{(\overline{\rho} \tilde{Z}_\alpha)}{\partial t} + \frac{\partial (\overline{\rho} \widetilde{Z_\alpha u_j})}{\partial x_j}
+= \frac{\partial}{\partial x_j}\left(\overline{\rho} D_\alpha[\tilde{T}] \frac{\partial \tilde{Z}_\alpha}{\partial x_j}\right)
++ \overline{\dot{m}_\alpha'''} + \overline{\dot{m}_{\rm b,\alpha}'''}
+$$
+
+$$
+\frac{(\overline{\rho} \tilde{Z}_\alpha)}{\partial t} + \frac{\partial (\overline{\rho} \tilde{Z}_\alpha \tilde{u}_j)}{\partial x_j}
+= - \frac{\partial J_{\alpha,j}^{sgs}}{\partial x_j}
++ \frac{\partial}{\partial x_j}\left(\overline{\rho} D_\alpha[\tilde{T}] \frac{\partial \tilde{Z}_\alpha}{\partial x_j}\right)
++ \overline{\dot{m}_\alpha'''} + \overline{\dot{m}_{\rm b,\alpha}'''}
+$$
+
+where
+
+<div style="display: flex; align-items: center;">
+
+<div style="flex: 1; padding-right: 1em;">
+
+$$
+J_{\alpha,j}^{sgs} \equiv \overline{\rho} (\widetilde{Z_\alpha u_j} - \tilde{Z}_\alpha \tilde{u}_j)
+$$
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+- $J_{\alpha,j}^{sgs}$ is unclosed
+- $\overline{\dot{m}_\alpha'''}$ is unclosed and determines heat release rate!
+</div>
+
+</div>
+
+## Transport of Sensible Enthalpy
+
+$$
+\frac{\partial (\rho h_s)}{\partial t}
++ \frac{(\rho h_s u_j)}{\partial x_j}
+= \frac{\mathrm{D} \bar{p}}{\mathrm{D} t}
+- \frac{\partial \dot{q}_j''}{\partial x_j}
+- \frac{\partial \dot{q}_{r,j}''}{\partial x_j}
++ \dot{q}''' + \dot{q}_b'''
+$$
+
+$$
+\frac{\partial (\overline{\rho} \tilde{h}_s)}{\partial t}
++ \frac{(\overline{\rho} \tilde{h}_s \tilde{u}_j)}{\partial x_j}
+= \frac{\mathrm{D} \bar{p}}{\mathrm{D} t}
+- \frac{\partial \dot{q}_j''^{sgs}}{\partial x_j}
+- \frac{\partial \overline{\dot{q}_j''}}{\partial x_j}
+- \frac{\partial \overline{\dot{q}_{r,j}''}}{\partial x_j}
++ \overline{\dot{q}'''} + \overline{\dot{q}_b'''}
+$$
+
+where
+
+<div style="display: flex; align-items: center;">
+
+<div style="flex: 1; padding-right: 1em;">
+
+$$
+\dot{q}_j''^{sgs} \equiv \overline{\rho}\left(\widetilde{h_s u_j}-\tilde{h}_s \tilde{u}_j\right)
+$$
+
+$$
+\overline{\dot{q}_j''} = - \overline{k \frac{\partial T}{\partial x_j}} - \overline{ \sum_\alpha h_{s,\alpha} \rho D_\alpha[T] \frac{\partial Z_\alpha}{\partial x_j}}
+$$
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+- $\dot{q}_j''^{sgs}$ is unclosed
+- $\overline{\dot{q}_j''}$ is unclosed and important at the wall
+</div>
+
+</div>
+
+## Thermal Coduction and Species Diffusion 
+
+$$
+k_t = \frac{\mu_t c_p}{\mathrm{Pr}_t}
+$$
+
+and
+
+$$
+(\rho D)_t = \frac{\mu_t}{\mathrm{Sc}_t}
+$$
+
+with the assumption / choice of $\mathrm{Pr}_t = \mathrm{Sc}_t$ = const. = 0.5

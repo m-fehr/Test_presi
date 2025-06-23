@@ -1,0 +1,53 @@
+---
+title: "Turbulence in Fire -- Phenomena, Equations and Models"
+format: 
+  revealjs:
+    # theme: serif
+    # theme: simple
+    # theme: solarized
+    slide-number: "c"
+    css: custom.css
+    margin: 0.05
+    html-math-method: 
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.7/tex-mml-chtml.min.js
+editor: visual
+author:
+  - name: "Lukas Arnold"
+    id: la
+    orcid: 0000-0002-5939-8995
+    email: l.arnold@fz-juelich.de
+    affiliation: 
+      - name: Forschungszentrum Jülich & <br>University of Wuppertal
+  - name: "Bjarne Husted"
+    id: bh
+    orcid: 0000-0000-0000-0002
+    email: bphu@dtu.dk
+    affiliation:
+      - name: Danmarks Tekniske Universitet
+  - name: "Randall McDermott"
+    id: rm
+    orcid: 0000-0003-3815-3400
+    email: randall.mcdermott@nist.gov
+    affiliation: 
+      - name: National Institute of <br> Standards and Technology
+footer: "Turbulence in Fire"
+---
+
+{{< include 00_overview.qmd >}}
+
+{{< include 01_phenomena.qmd >}}
+
+{{< include 02_fundamentals.qmd >}}
+
+{{< include 03_les_equations.qmd >}}
+
+{{< include 04_turbulent_viscosity.qmd >}}
+
+{{< include 05_boundary_layers.qmd >}}
+
+{{< include 06_turbulent_combustion.qmd >}}
+
+{{< include 07_turbulence_radiation_interaction.qmd >}}
+
+{{< include 08_summary.qmd >}}

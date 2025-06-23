@@ -1,0 +1,6 @@
+*/*_files
+*/*.html
+**/.DS_Store
+.venv
+/.quarto/
+.quarto
